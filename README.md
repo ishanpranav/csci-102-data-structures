@@ -1,4 +1,4 @@
-# CSCI 102 Data Structures
+# Data Structures
 This is a collection of miscellaneous problem sets from the NYU CSCI 102 Data Structures course. 
 ## API Documentation
 The project specification is available [here](project5.pdf).
