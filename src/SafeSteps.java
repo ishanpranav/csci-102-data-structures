@@ -6,12 +6,13 @@ public final class SafeSteps {
     
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            final long pow2N = 1L << scanner.nextInt();
-            final long popCount = scanner.nextInt();
+            final int exponent = scanner.nextInt();
+            final int popCount = scanner.nextInt();
+            final long pow2N = 1L << exponent;
             
             for (long i = 0; i < pow2N; i++) {
                 if (Long.bitCount(i) == popCount) {
-                    System.out.println(String.format("%4s", Long.toBinaryString(i)).replace(' ', '0'));
+                    System.out.println(String.format("%" + exponent + "s", Long.toBinaryString(i)).replace(' ', '0'));
                 }
             }
         }
