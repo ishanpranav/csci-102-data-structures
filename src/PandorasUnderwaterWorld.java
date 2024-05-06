@@ -91,7 +91,7 @@ public final class PandorasUnderwaterWorld {
                     results.add(new Coordinate(source.layer, source.row - 1, source.column));
             }
             
-            if (source.column + 1 < this.rows && this.airPockets[source.layer][source.row][source.column + 1]) {
+            if (source.column + 1 < this.columns && this.airPockets[source.layer][source.row][source.column + 1]) {
                     results.add(new Coordinate(source.layer, source.row, source.column + 1));
             }
             
@@ -109,7 +109,7 @@ public final class PandorasUnderwaterWorld {
             for (int layer = 0; layer < this.layers; layer++) {
                 for (int row = 0; row < this.rows; row++) {
                     for (int column = 0; column < this.columns; column++) {
-                        distances.put(new Coordinate(layer, row, column), 100);
+                        distances.put(new Coordinate(layer, row, column), Integer.MAX_VALUE);
                     }
                 }
             }
@@ -174,7 +174,15 @@ public final class PandorasUnderwaterWorld {
                 }
             }
             
-            System.out.println(grid.dijkstra(start).get(end));
+            final int distance = grid.dijkstra(start).get(end);
+            
+            if (distance == Integer.MAX_VALUE) {
+                System.out.println("Staying forever!");
+                
+                return;
+            }
+            
+            System.out.println("Reached the surface in " + distance + " minute(s).");
         }
     }
 }
